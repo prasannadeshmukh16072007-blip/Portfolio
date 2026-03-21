@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasanna Deshmukh | Portfolio</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-color: #00bcd4;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #f5f5f5;
+            --text-muted: #b3b3b3;
+            --bg-header: rgba(18, 18, 18, 0.95);
+            --border-color: #333;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        /* Light Mode Variables */
+        body.light-mode {
+            --bg-dark: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #222222;
+            --text-muted: #555555;
+            --bg-header: rgba(255, 255, 255, 0.95);
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none; /* This line removes the underline from all links */
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--bg-header);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero-content h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* FabLab Animated Title */
+        .fablab-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: inline-block;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { 
+                text-shadow: 0 0 5px rgba(0, 188, 212, 0.2); 
+                transform: scale(1); 
+            }
+            100% { 
+                text-shadow: 0 0 20px rgba(0, 188, 212, 0.8); 
+                transform: scale(1.02); 
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: #000;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            font-size: 1rem;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #008ba3;
+            border-color: #008ba3;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 188, 212, 0.4); 
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .hero-img img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        /* Resume Section */
+        .resume-banner {
+            background-color: var(--bg-card);
+            border: 2px dashed var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+            transition: var(--transition);
+        }
+
+        .resume-banner:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15);
+        }
+
+        /* Common Card Styles */
+        .skill-card, .module-card, .project-card, .contact-container {
+            background-color: var(--bg-card);
+            transition: var(--transition);
+        }
+
+        /* Enhanced Hover Effects for Cards */
+        .skill-card:hover, .module-card:hover, .project-card:hover {
+            transform: translateY(-10px) scale(1.03); 
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 188, 212, 0.15); 
+            z-index: 10;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+            border: 1px solid transparent;
+        }
+
+        /* Modules Section */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            padding: 2.5rem 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .module-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .module-card:hover .module-icon {
+            transform: scale(1.2) translateY(-5px);
+        }
+
+        .module-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .module-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin: 0 auto;
+            max-width: 500px; 
+            width: 100%;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05); 
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            position: relative;
+            background-color: var(--bg-card);
+            z-index: 2;
+        }
+
+        .project-tags {
+            margin: 1rem 0;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: rgba(0, 188, 212, 0.1);
+            color: var(--primary-color);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-container:hover {
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.1);
+            border-color: var(--border-color);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .input-group input {
+            flex: 1;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #home, .about-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .input-group {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .contact-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Prasanna.</div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Mode">☀️</button>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Prasanna Deshmukh</span></h1>
+            <h2>Mechanical Engineering Student</h2>
+            <div class="fablab-title">✨ Digital FabLab Member</div>
+            <p>Bridging the gap between physical design and digital solutions. Passionate about CAD, hardware systems, and technical project management.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+                <a href="agreement.txt" target="_blank" class="btn btn-outline">FabLab Agreement</a>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="photo.jpeg" alt="Prasanna - Profile">
+        </div>
+    </section>
+
+    <section id="about" style="padding-bottom: 2rem;">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>I am a Mechanical Engineering student with a strong drive to intersect traditional mechanical design with modern software and hardware technologies. My core foundation lies in Computer-Aided Design (CAD), manufacturing processes, and managing complex technical projects from ideation to execution.</p>
+                <br>
+                <p>Beyond mechanical systems, I am actively expanding my skill set into web development, IoT, and embedded systems to build complete, integrated products. When I'm not designing models or writing code, you can usually find me on the squash court.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" style="padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="resume-banner">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-main);">Want the full overview?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Download my resume to see my detailed academic background, engineering experience, and technical certifications.</p>
+            <a href="Resume.pdf" target="_blank" class="btn btn-outline" style="font-size: 1.1rem; padding: 1rem 2.5rem;">📄 Download Resume (.PDF)</a>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical & Professional Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Engineering & Design</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">CAD (SolidWorks, AutoCAD), 3D Printing, PCB Design</p>
+            </div>
+            <div class="skill-card">
+                <h3>Software & Web</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">HTML5, CSS3, JavaScript (Basic), Java</p>
+            </div>
+            <div class="skill-card">
+                <h3>Management & Life</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">Technical Project Management, Squash Player</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="modules">
+        <h2 class="section-title">My Modules</h2>
+        <div class="modules-grid">
+            
+            <a href="modules.html" style="text-decoration: none; color: inherit; display: block;">
+                <div class="module-card">
+                    <div class="module-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Building responsive and functional interfaces using HTML, CSS, and basic JavaScript.</p>
+                </div>
+            </a>
+
+            <div class="module-card">
+                <div class="module-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Creating intuitive user interfaces and wireframes for web applications and software tools.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">📐</div>
+                <h3>Computer Aided Design</h3>
+                <p>Drafting precise 2D and 3D models for mechanical components and complex assemblies.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">⚙️</div>
+                <h3>Computer Aided Cutting</h3>
+                <p>Translating digital designs into physical parts using CNC machining and laser cutting techniques.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">🖨️</div>
+                <h3>3D Printing & Design</h3>
+                <p>Optimizing geometries for additive manufacturing and rapid prototyping of physical models.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">🔌</div>
+                <h3>PCB Design</h3>
+                <p>Designing and routing custom printed circuit boards for hardware and embedded systems.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">📡</div>
+                <h3>IoT & Embedded Systems</h3>
+                <p>Connecting hardware to the internet, programming microcontrollers, and processing sensor data.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">☕</div>
+                <h3>Java</h3>
+                <p>Developing robust, object-oriented software applications and backend logic.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">🔗</div>
+                <h3>Networking</h3>
+                <p>Understanding the foundations of data communication, protocols, and network architecture.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">🤖</div>
+                <h3>AI/ML</h3>
+                <p>Exploring artificial intelligence and machine learning applications in engineering and automation.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Recent Project</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div style="overflow: hidden;">
+                    <img src="WSM.png" alt="Waste Segregation using Arduino Uno" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Smart Waste Segregation System</h3>
+                    <div class="project-tags">
+                        <span class="tag">Arduino Uno</span>
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">Mechatronics</span>
+                        <span class="tag">Sensors</span>
+                    </div>
+                    <p style="color: var(--text-muted);">An automated waste sorting mechanism engineered using an Arduino Uno microcontroller. The system utilizes various sensors to detect and classify waste types, actuating mechanical components to automatically segregate materials into appropriate bins.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-container">
+            <p style="color: var(--text-muted); text-align: center;">I'm always open to discussing mechanical design, hardware projects, tech management, or even a game of squash. Reach out!</p>
+            
+            <form class="contact-form" onsubmit="sendEmail(event)">
+                <div class="input-group">
+                    <input type="text" id="senderName" placeholder="Your Name" required>
+                    <input type="email" id="senderEmail" placeholder="Your Email" required>
+                </div>
+                <input type="text" id="senderSubject" placeholder="Subject" required>
+                <textarea id="senderMessage" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send via Email App</button>
+            </form>
+            <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 2rem;">
+                <a href="https://github.com/prasannadeshmukh16072007-blip" target="_blank" style="color: var(--primary-color); font-weight: bold;">GitHub Profile</a>
+                <a href="https://www.linkedin.com/in/prasanna-deshmukh-a035713b6?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" style="color: var(--primary-color); font-weight: bold;">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built from scratch.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeToggleBtn.textContent = '🌙'; 
+            } else {
+                themeToggleBtn.textContent = '☀️'; 
+            }
+        });
+    function sendEmail(event) {
+        // Prevent the form from refreshing the page
+        event.preventDefault();
+
+        // Get the values the user typed in
+        const name = document.getElementById('senderName').value;
+        const email = document.getElementById('senderEmail').value;
+        const subject = document.getElementById('senderSubject').value;
+        const message = document.getElementById('senderMessage').value;
+
+        // --- PUT PRASANNA'S GMAIL ADDRESS HERE ---
+        const targetEmail = "prasannadeshmukh16072007@gmail.com"; 
+
+        // Format the email body to look nice
+        const bodyText = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+        // Create the mailto link and trigger it
+        const mailtoLink = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+        window.location.href = mailtoLink;
+    }
+    </script>
+</body>
+</html>
