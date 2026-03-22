@@ -61,11 +61,19 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        /* Logo Theme Logic */
+        .logo img {
+            height: 3.5rem; 
+            object-fit: contain; 
         }
+
+        /* Default Theme (Dark) - Hide light, show dark */
+        .logo-light { display: none !important; }
+        .logo-dark { display: block !important; }
+
+        /* Light Theme - Hide dark, show light */
+        body.light-mode .logo-dark { display: none !important; }
+        body.light-mode .logo-light { display: block !important; }
 
         .nav-center {
             display: flex;
@@ -264,7 +272,10 @@
 <body>
 
     <header>
-        <div class="logo">Prasanna.</div>
+        <div class="logo">
+            <img src="FabLabDark.png" alt="FabLab Logo Dark Mode" class="logo-dark">
+            <img src="FabLabLight.png" alt="FabLab Logo Light Mode" class="logo-light">
+        </div>
         <div class="nav-center">
             <a href="index.html" class="back-btn">← Back to Portfolio</a>
             <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Mode">☀️</button>

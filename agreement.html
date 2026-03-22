@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabLab Agreement | Prasanna</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-color: #00bcd4;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #f5f5f5;
+            --text-muted: #b3b3b3;
+            --bg-header: rgba(18, 18, 18, 0.95);
+            --border-color: #333;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        /* Light Mode Variables */
+        body.light-mode {
+            --bg-dark: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #222222;
+            --text-muted: #555555;
+            --bg-header: rgba(255, 255, 255, 0.95);
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--bg-header);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Logo Theme Logic */
+        .logo img {
+            height: 3.5rem; 
+            object-fit: contain; 
+        }
+
+        .logo-light { display: none !important; }
+        .logo-dark { display: block !important; }
+
+        body.light-mode .logo-dark { display: none !important; }
+        body.light-mode .logo-light { display: block !important; }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .back-btn {
+            font-weight: bold;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* Agreement Layout */
+        .agreement-wrapper {
+            min-height: 100vh;
+            padding: 120px 5% 50px 5%; /* Top padding offsets the fixed header */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .agreement-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 3rem 4rem;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .agreement-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(0, 188, 212, 0.1);
+        }
+
+        .agreement-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        /* Styled List */
+        .agreement-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .agreement-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .agreement-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* Declaration Section */
+        .declaration-box {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .declaration-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .signature {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: var(--text-main);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .agreement-card {
+                padding: 2rem;
+            }
+            .agreement-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="FabLabDark.png" alt="FabLab Logo Dark Mode" class="logo-dark">
+            <img src="FabLabLight.png" alt="FabLab Logo Light Mode" class="logo-light">
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="back-btn">← Back to Portfolio</a>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Mode">☀️</button>
+        </div>
+    </header>
+
+    <div class="agreement-wrapper">
+        <div class="agreement-card">
+            <h1 class="agreement-title">📜 FabLab Student Agreement</h1>
+
+            <h3 class="section-heading">The FabLab, SSGMCE is responsible for:</h3>
+            <ul class="agreement-list">
+                <li>Teaching principles and practices of digital fabrication</li>
+                <li>Arranging lectures, recitations, meetings, and events for the class</li>
+                <li>Evaluating and providing feedback on student work</li>
+                <li>Offering clear standards for completing assignments</li>
+                <li>Certifying and archiving student progress</li>
+                <li>Supervising class preparation</li>
+                <li>Reviewing prospective students, instructors, and labs</li>
+                <li>Providing central staff and infrastructure for students, instructors, and labs</li>
+                <li>Fund-raising for costs not covered by student tuition</li>
+                <li>Managing and reporting on the program’s finances, results, and impacts</li>
+                <li>Publicizing the program</li>
+            </ul>
+
+            <h3 class="section-heading">I am a FabLab, SSGMCE student, responsible for:</h3>
+            <ul class="agreement-list">
+                <li>Attending class lectures and participating in reviews</li>
+                <li>Developing and documenting projects assigned to introduce and demonstrate skills</li>
+                <li>Honestly reporting on my work, and appropriately attributing the work of others</li>
+                <li>Working safely</li>
+                <li>Leaving workspaces in the same (or better) condition than I found them</li>
+                <li>Participating in the upkeep of my lab</li>
+                <li>Ensuring that my tuition to cover local and central class costs is covered</li>
+                <li>Following locally applicable health and safety guidance</li>
+                <li>Promoting a respectful environment free of harassment and discrimination</li>
+            </ul>
+
+            <div class="declaration-box">
+                <h2 class="declaration-title">✍️ Declaration</h2>
+                <p style="color: var(--text-muted);">Signed by committing this file in my repository,</p>
+                <p class="signature"><strong>Name:</strong> Prasanna Vishalrao Deshmukh</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                themeToggleBtn.textContent = '🌙'; 
+            } else {
+                themeToggleBtn.textContent = '☀️'; 
+            }
+        });
+    </script>
+</body>
+</html>

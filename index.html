@@ -43,7 +43,7 @@
         }
 
         a {
-            text-decoration: none; /* This line removes the underline from all links */
+            text-decoration: none;
             color: var(--text-main);
             transition: color 0.3s ease;
         }
@@ -63,11 +63,19 @@
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        /* Logo Theme Logic */
+        .logo img {
+            height: 3.5rem; /* Slightly larger to make the FabLab text readable */
+            object-fit: contain; 
         }
+
+        /* Default Theme (Dark) - Hide light, show dark */
+        .logo-light { display: none !important; }
+        .logo-dark { display: block !important; }
+
+        /* Light Theme - Hide dark, show light */
+        body.light-mode .logo-dark { display: none !important; }
+        body.light-mode .logo-light { display: block !important; }
 
         .nav-center {
             display: flex;
@@ -450,7 +458,10 @@
 <body>
 
     <header>
-        <div class="logo">Prasanna.</div>
+        <div class="logo">
+            <img src="FabLabDark.png" alt="FabLab Logo Dark Mode" class="logo-dark">
+            <img src="FabLabLight.png" alt="FabLab Logo Light Mode" class="logo-light">
+        </div>
         <div class="nav-center">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -474,7 +485,7 @@
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="#projects" class="btn">View My Work</a>
                 <a href="#contact" class="btn btn-outline">Contact Me</a>
-                <a href="agreement.txt" target="_blank" class="btn btn-outline">FabLab Agreement</a>
+                <a href="agreement.html" class="btn btn-outline">FabLab Agreement</a>
             </div>
         </div>
         <div class="hero-img">
@@ -637,6 +648,7 @@
     </footer>
 
     <script>
+        // Theme Toggle Logic
         const themeToggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
 
@@ -649,26 +661,23 @@
                 themeToggleBtn.textContent = '☀️'; 
             }
         });
-    function sendEmail(event) {
-        // Prevent the form from refreshing the page
-        event.preventDefault();
+        
+        // Email Logic
+        function sendEmail(event) {
+            event.preventDefault();
 
-        // Get the values the user typed in
-        const name = document.getElementById('senderName').value;
-        const email = document.getElementById('senderEmail').value;
-        const subject = document.getElementById('senderSubject').value;
-        const message = document.getElementById('senderMessage').value;
+            const name = document.getElementById('senderName').value;
+            const email = document.getElementById('senderEmail').value;
+            const subject = document.getElementById('senderSubject').value;
+            const message = document.getElementById('senderMessage').value;
 
-        // --- PUT PRASANNA'S GMAIL ADDRESS HERE ---
-        const targetEmail = "prasannadeshmukh16072007@gmail.com"; 
+            const targetEmail = "prasannadeshmukh16072007@gmail.com"; 
 
-        // Format the email body to look nice
-        const bodyText = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            const bodyText = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
 
-        // Create the mailto link and trigger it
-        const mailtoLink = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-        window.location.href = mailtoLink;
-    }
+            const mailtoLink = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            window.location.href = mailtoLink;
+        }
     </script>
 </body>
 </html>
